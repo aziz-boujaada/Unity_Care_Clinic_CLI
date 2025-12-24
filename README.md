@@ -29,6 +29,7 @@ Unity Care CLI is a PHP-based application designed to manage various aspects of 
    cd Unity_Care_CLI
    ```
 
+
 2. Configure the database connection in `config/config_db.php`
 
 3. Import the database schema:
