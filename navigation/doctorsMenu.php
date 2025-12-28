@@ -17,20 +17,34 @@ do {
 
     switch ($doctorChoice) {
         case 1:
-            printf("Enter first name : ");
-            $first_name = trim(fgets(STDIN));
+            do {
+                printf("Enter first name :");
+                $first_name = trim(fgets(STDIN));
+                $isValid = Validator::nameValidation($first_name);
+            } while (!$isValid);
 
-            printf("Enter last name : ");
-            $last_name = trim(fgets(STDIN));
+            do {
+                printf("Enter your last name");
+                $last_name = trim(fgets(STDIN));
+                $isValid = Validator::nameValidation($last_name);
+            } while (!$isValid);
+
+            do {
+                printf("Enter your email");
+                $email = trim(fgets(STDIN));
+                $isValid =  Validator::emailValidation($email);
+            } while (!$isValid);
+
+
+            do {
+                printf("Enter your phone number");
+                $phone_number = trim(fgets(STDIN));
+                $isValid = Validator::phoneValidation($phone_number);
+            } while (!$isValid);
 
             printf("Enter specialization : ");
             $specialization = trim(fgets(STDIN));
 
-            printf("Enter phone number : ");
-            $phone_number = trim(fgets(STDIN));
-
-            printf("Enter email : ");
-            $email = trim(fgets(STDIN));
 
             $data = [
                 "first_name" => $first_name,
@@ -51,21 +65,33 @@ do {
             $doctor = new Doctor();
             $doctor->findByID($id);
 
-            printf("Enter new first name : ");
-            $first_name = trim(fgets(STDIN));
+           do {
+                printf("Enter first name :");
+                $first_name = trim(fgets(STDIN));
+                $isValid = Validator::nameValidation($first_name);
+            } while (!$isValid);
 
-            printf("Enter new last name : ");
-            $last_name = trim(fgets(STDIN));
+            do {
+                printf("Enter your last name");
+                $last_name = trim(fgets(STDIN));
+                $isValid = Validator::nameValidation($last_name);
+            } while (!$isValid);
 
+            do {
+                printf("Enter your email");
+                $email = trim(fgets(STDIN));
+                $isValid =  Validator::emailValidation($email);
+            } while (!$isValid);
+
+
+            do {
+                printf("Enter your phone number");
+                $phone_number = trim(fgets(STDIN));
+                $isValid = Validator::phoneValidation($phone_number);
+            } while (!$isValid);
+            
             printf("Enter new specialization : ");
             $specialization = trim(fgets(STDIN));
-
-            printf("Enter new phone number : ");
-            $phone_number = trim(fgets(STDIN));
-
-            printf("Enter new email : ");
-            $email = trim(fgets(STDIN));
-
           
 
             $data = [

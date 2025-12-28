@@ -1,6 +1,6 @@
 <?php
 include "./management/patient.php";
-
+include "./validation/Validator.php";
 do {
     echo "
      =============== GESTION DES PATIENTS ==================  
@@ -17,26 +17,46 @@ do {
     switch ($patientChoice) {
         //add new patient choice 
         case 1:
-            printf("Enter first name :");
-            $first_name = trim(fgets(STDIN));
+            do {
+                printf("Enter first name :");
+                $first_name = trim(fgets(STDIN));
+                $isValid = Validator::nameValidation($first_name);
+            } while (!$isValid);
 
-            printf("Enter your last name");
-            $last_name = trim(fgets(STDIN));
+            do {
+                printf("Enter your last name");
+                $last_name = trim(fgets(STDIN));
+                $isValid = Validator::nameValidation($last_name);
+            } while (!$isValid);
 
-            printf("Enter your age");
-            $age = trim(fgets(STDIN));
+            do {
+                printf("Enter your age");
+                $age = trim(fgets(STDIN));
+                $isValid = Validator::ageValidation($age);
+            } while (!$isValid);
 
-            printf("Enter your email");
-            $email = trim(fgets(STDIN));
+            do {
+                printf("Enter your email");
+                $email = trim(fgets(STDIN));
+                $isValid =  Validator::emailValidation($email);
+            } while (!$isValid);
 
-            printf("Enter your phone number");
-            $phone_number = trim(fgets(STDIN));
 
-            printf("Enter your gender (male or female)");
-            $gender = trim(fgets(STDIN));
+            do {
+                printf("Enter your phone number");
+                $phone_number = trim(fgets(STDIN));
+                $isValid = Validator::phoneValidation($phone_number);
+            } while (!$isValid);
 
-            printf("Enter your adress");
-            $adress = trim(fgets(STDIN));
+            do {
+                printf("Enter your gender (male or female)");
+                $gender = trim(fgets(STDIN));
+                $isValid = Validator::genderValidation($gender);
+            } while (!$isValid);
+            do {
+                printf("Enter your adress");
+                $adress = trim(fgets(STDIN));
+            } while (empty($adress));
 
             $data = [
                 "first_name" => $first_name,
@@ -63,26 +83,47 @@ do {
             $Patient = new Patient();
             $Patient->findByID($id);
 
-            printf("Enter first name :");
-            $first_name = trim(fgets(STDIN));
+            do {
+                printf("Enter first name :");
+                $first_name = trim(fgets(STDIN));
+                $isValid = Validator::nameValidation($first_name);
+            } while (!$isValid);
 
-            printf("Enter your last name");
-            $last_name = trim(fgets(STDIN));
+            do {
+                printf("Enter your last name");
+                $last_name = trim(fgets(STDIN));
+                $isValid = Validator::nameValidation($last_name);
+            } while (!$isValid);
 
-            printf("Enter your age");
-            $age = trim(fgets(STDIN));
+            do {
+                printf("Enter your email");
+                $email = trim(fgets(STDIN));
+                $isValid =  Validator::emailValidation($email);
+            } while (!$isValid);
 
-            printf("Enter your email");
-            $email = trim(fgets(STDIN));
 
-            printf("Enter your phone number");
-            $phone_number = trim(fgets(STDIN));
+            do {
+                printf("Enter your phone number");
+                $phone_number = trim(fgets(STDIN));
+                $isValid = Validator::phoneValidation($phone_number);
+            } while (!$isValid);
 
-            printf("Enter your gender (male or female)");
-            $gender = trim(fgets(STDIN));
+            do {
+                printf("Enter your age");
+                $age = trim(fgets(STDIN));
+                $isValid = Validator::ageValidation($age);
+            } while (!$isValid);
 
-            printf("Enter your adress");
-            $adress = trim(fgets(STDIN));
+
+            do {
+                printf("Enter your gender (male or female)");
+                $gender = trim(fgets(STDIN));
+                $isValid = Validator::genderValidation($gender);
+            } while (!$isValid);
+            do {
+                printf("Enter your adress");
+                $adress = trim(fgets(STDIN));
+            } while (empty($adress));
 
             $data = [
                 "id" => $id,
@@ -111,15 +152,16 @@ do {
             $patient = new Patient();
             $patient->deletePatient($id);
             break;
-        
-        case 4 : 
+
+        case 4:
             $patient = new Patient();
             $patient->displayAllPatients();
             break;
-        
-        case 5 :
-             include "./navigation/menu.php" ;
-             break;
-        default : echo "ivalid choice ";
+
+        case 5:
+            include "./navigation/menu.php";
+            break;
+        default:
+            echo "ivalid choice ";
     }
 } while ((int)$patientChoice <= 5);

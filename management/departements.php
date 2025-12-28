@@ -8,7 +8,7 @@ class Departement{
 
     public function __construct()
     {
-        $db = new Database();
+        $db = new Database();   
         $this->connection = $db->getConnect();
     }
  //find by id 
@@ -72,6 +72,7 @@ class Departement{
     public function deleteDepartment($id){
           printf("Are you sure want delete ? (yes/no)");
         $choice = trim(fgets((STDIN)));
+        
         switch ($choice) {
             case "yes":
                 $query = "DELETE FROM departements WHERE departement_id = :id";

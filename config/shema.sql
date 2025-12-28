@@ -1,3 +1,4 @@
+CREATE DATABASE unity_care_cli
 -- cerate tables of database 
 CREATE TABLE patients(
  patient_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
