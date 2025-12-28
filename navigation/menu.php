@@ -1,16 +1,16 @@
 <?php
-echo "
- =============== UNITY CARE CLI ==================  
-1-gestion des patients 
-2-gestion des doctors 
-3-gestion des departements
-4-les statistiques
-5-quite le programme 
-_________________________________________________
-";
 
 
 do {
+    echo "
+    =============== UNITY CARE CLI ==================  
+    1-gestion des patients 
+    2-gestion des doctors 
+    3-gestion des departements
+    4-les statistiques
+    5-quite le programme 
+    _________________________________________________
+    ";
     printf("enter your choice :");
     $choice = trim(fgets(STDIN));
 echo "_________________________________________________" . "\n";
@@ -32,4 +32,4 @@ echo "_________________________________________________" . "\n";
             break;
         default : echo "invalid choice";       
     }
-} while ($choice !== 5);
+} while ($choice <= 5);
